@@ -72,7 +72,7 @@ public class Frontend {
                     
                     DataOutputStream output=new DataOutputStream(socket.getOutputStream());    
                     
-                    if (value != null) {
+                    if (this.value != null) {
                         myMap.put(this.key, this.value);
                         output.writeUTF("0");
                         output.flush();
