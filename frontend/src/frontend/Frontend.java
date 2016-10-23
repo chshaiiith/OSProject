@@ -41,21 +41,11 @@ public class Frontend {
         private Long value = null;
         private Socket socket = null;
 
-/*        
-        void Simplethread(Long key) {
-            this.key = key;
-      
-        }
- */
         private Simplethread(Socket socket) {
             this.socket = socket;
+ 
         }
-        
- /*       void Simplethread(Long key, Long value) {
-            this.key = key;
-            this.value = value;
-        }
- */       
+      
         public void run() {
             try {
                 String data;
@@ -82,7 +72,7 @@ public class Frontend {
                     
                     DataOutputStream output=new DataOutputStream(socket.getOutputStream());    
                     
-                    if (value == null) {
+                    if (value != null) {
                         myMap.put(this.key, this.value);
                         output.writeUTF("0");
                         output.flush();
@@ -115,16 +105,11 @@ public class Frontend {
         try {
             while (true) {
                 Socket socket = listener.accept();
-                try {
-                    pool.execute( new Simplethread(socket));
-                } finally {
-                    socket.close();
-                }
+                pool.execute(new Simplethread(socket));
             }
         }
         finally {
             listener.close();
         }
-    }
-    
+    } 
 }
