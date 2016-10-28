@@ -101,7 +101,7 @@ public class Frontend {
     public static void main(String[] args) throws IOException {
     
         // TODO code application logic here   
-        ServerSocket listener = new ServerSocket(9090);
+        ServerSocket listener = new ServerSocket(10000);
         try {
             while (true) {
                 Socket socket = listener.accept();
